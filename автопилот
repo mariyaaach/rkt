@@ -1,0 +1,8 @@
+import krpc
+conn = krpc.connect()
+kspVersion = conn.krpc.get_status().version
+print(kspVersion)
+vessel = conn.space_center.active_vessel #определяем активное судно
+flightInfo = vessel.flight()
+print(vessel.position(vessel.orbit.body.reference_frame))
+initialAltitude = flightInfo.surface_altitude + 1
